@@ -1,3 +1,4 @@
-# Dynamic Attributes
-- to paraphrase, this is simply assigning JavaScript values to HTML attributes. that's it
-- we also learnt about the shorthand syntaxe
+# Nested Components
+- one of the fundamental pillars of JavaScript frameworks
+- unlike in Vue, styling is always scoped
+- (an aside) I didn't make a branch for the styling section because I didn't feel it was needed

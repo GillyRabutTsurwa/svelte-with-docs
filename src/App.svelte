@@ -1,39 +1,37 @@
 <script>
+  import Nested from "./Nested.svelte";
   let title = "Introduction";
-  let subtitle = "Dynamic Attributes";
+  let subtitle = "Nested Components";
 
-  const currentTutoLink = "https://svelte.dev/tutorial/adding-data";
-  const portfolioSite = "https://gilbertrabuttsurwa.tech";
+  const topicPrependText = "nested-components";
 
-  const href = "https://github.com/GillyRabutTsurwa";
+  const currentTutoLink = `https://svelte.dev/tutorial/${topicPrependText}`;
 </script>
 
 <main>
   <div class="docs">
     <h1 class="docs__title">{title}</h1>
     <h2 class="docs__subtitle">{subtitle}</h2>
-    <p class="docs__text">We can use curly braces inside HTML attributes as well.</p>
-    <p class="docs__text">This way, we can assign variabalise and make HTML attributes more dynamic, on top of just text</p>
-    <p class="docs__text">In summary, this is pretty much the same concept as the last branch, but with attributes instead.</p>
     <p class="docs__text">
-      I actually already used this in the last branch, upon defining the link for the current tutorial in the Svelte documentation. I am adding one
-      more link to further clarify things.
+      It would be impractical to put your entire app in a single component. Instead, we can import components from other files and include them as
+      though we were including elements.
     </p>
-    <h4>One More Thing:</h4>
+    <p class="docs__text">Add a script tag that imports Nested.svelte...</p>
+    <p class="docs__text">Then add it to the markup</p>
+    <p class="docs__text">Notice that even though Nested.svelte has a</p>
+    <p>element, the styles from App.svelte don't leak in.</p>
     <p class="docs__text">
-      It's not uncommon to have an attribute where the name (HTML attribute name) and value (Javascript variable name) are the same. If this is the
-      case, there is a <span class="underline">shorthand syntaxe</span> Observe the code for the third link tag:
+      Also notice that the component name Nested is capitalised. This convention has been adopted to allow us to differentiate between user-defined
+      components and regular HTML tags
     </p>
   </div>
   <hr />
   <div class="links">
     <a href={currentTutoLink}>Link to Docs</a>
-    <a href={portfolioSite}>Gil's Portfolio Site</a>
-
-    <!-- so, with the shorthand method, instead of doing this: -->
-    <!-- <a href={href}>GitHub Settings</a> -->
-    <!-- we do: -->
-    <a {href}>GitHub Settings</a>
+  </div>
+  <hr />
+  <div class="code">
+    <Nested />
   </div>
 </main>
 
@@ -63,11 +61,15 @@
     }
   }
 
-  .links > * {
-    margin-right: 3em;
+  .links {
+    margin: 2.5em 0;
   }
 
-  .underline {
-    text-decoration: underline;
+  hr {
+    width: 50%;
+  }
+
+  p {
+    color: bisque;
   }
 </style>
