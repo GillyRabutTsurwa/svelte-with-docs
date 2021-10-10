@@ -1,8 +1,8 @@
 <script>
   let title = "Reactivity";
-  let subtitle = "Assignments";
+  let subtitle = "Declarations";
 
-  const topicPrependText = "reactive-assignments";
+  const topicPrependText = "reactive-declarations";
   const currentTutoLink = `https://svelte.dev/tutorial/${topicPrependText}`;
 
   let count = 0;
@@ -10,6 +10,19 @@
   function incrementCount() {
     count += 1;
   }
+
+  /** NEW
+   * this is the equivalent to computed properties in Vue (at least how they work)
+   * the main difference is the minimal syntaxe. observe:
+   */
+
+  $: squared = Math.pow(count, 2);
+
+  /**
+   * so as you can see, the value of square gets updated, even though it has nothing to do with the incrementCount()
+   * this is because incrementCount() changes the value of count, which squared is dependent on
+   * to recap, everytime count gets updated, squared does as well
+   */
 </script>
 
 <main>
@@ -17,8 +30,8 @@
     <h1 class="docs__title">{title}</h1>
     <h2 class="docs__subtitle">{subtitle}</h2>
     <p class="docs__text">
-      At the heart of Svelte is a powerful system of reactivity for keeping the DOM in sync with your application state — for example, in response to
-      an event. To demonstrate it, we first need to wire up an event handler (we will go through event handlers later)
+      Svelte automatically updates the DOM when your component's state changes. Often, some parts of a component's state need to be computed from
+      other parts (such as a fullname derived from a firstname and a lastname), and recomputed whenever they change.
     </p>
   </div>
   <hr />
@@ -27,7 +40,7 @@
   </div>
   <hr />
   <div class="code">
-    <p>{count}</p>
+    <p>{count} squared is {squared}</p>
     <button on:click={incrementCount}>Clicked {count === 1 ? "time" : "times"}</button>
   </div>
 </main>
@@ -52,6 +65,10 @@
     font-size: 4em;
     font-weight: 100;
   }
+
+  .docs__text {
+    font-size: 1.5em;
+  }
   @media (min-width: 640px) {
     main {
       max-width: none;
@@ -68,5 +85,9 @@
 
   p {
     color: bisque;
+  }
+
+  button {
+    cursor: pointer;
   }
 </style>

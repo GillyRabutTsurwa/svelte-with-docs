@@ -1,4 +1,5 @@
-# Reactive Assignments
-- this is what Svelte is famous for
-- our HTML output stays updated as our JavaScript values change
-- this is very easy to do, and is my one of my favourite about Svelte and JavaScript frameworks in general
+# Reactive Declarations
+- these work very similarly (if not identically) to how computed properties work in vue
+- the syntaxe is very different, very lean, but i like it enough
+- reactive values are defined using the ```$:``` syntaxe
+  - very different to Vue's method syntaxe
