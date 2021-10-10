@@ -1,4 +1,4 @@
-# Nested Components
-- one of the fundamental pillars of JavaScript frameworks
-- unlike in Vue, styling is always scoped
-- (an aside) I didn't make a branch for the styling section because I didn't feel it was needed
+# Reactive Assignments
+- this is what Svelte is famous for
+- our HTML output stays updated as our JavaScript values change
+- this is very easy to do, and is my one of my favourite about Svelte and JavaScript frameworks in general
