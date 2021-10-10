@@ -1,8 +1,8 @@
 <script>
   let title = "Reactivity";
-  let subtitle = "Declarations";
+  let subtitle = "Statements";
 
-  const topicPrependText = "reactive-declarations";
+  const topicPrependText = "reactive-statements";
   const currentTutoLink = `https://svelte.dev/tutorial/${topicPrependText}`;
 
   let count = 0;
@@ -11,18 +11,22 @@
     count += 1;
   }
 
-  /** NEW
-   * this is the equivalent to computed properties in Vue (at least how they work)
-   * the main difference is the minimal syntaxe. observe:
-   */
-
+  // ============== NEW: Examples of Reactive Statements ==============
   $: squared = Math.pow(count, 2);
 
-  /**
-   * so as you can see, the value of square gets updated, even though it has nothing to do with the incrementCount()
-   * this is because incrementCount() changes the value of count, which squared is dependent on
-   * to recap, everytime count gets updated, squared does as well
-   */
+  $: console.log(`The count is ${count}`);
+
+  $: {
+    console.log(`Le compte c'est ${count}`);
+    console.log(`J'ai dit que le compte c'est ${count}`);
+  }
+
+  $: {
+    if (squared >= 100) {
+      console.warn("Yo, cool down the pace");
+    }
+  }
+  // ===================================================================
 </script>
 
 <main>
@@ -30,13 +34,14 @@
     <h1 class="docs__title">{title}</h1>
     <h2 class="docs__subtitle">{subtitle}</h2>
     <p class="docs__text">
-      Svelte automatically updates the DOM when your component's state changes. Often, some parts of a component's state need to be computed from
-      other parts (such as a fullname derived from a firstname and a lastname), and recomputed whenever they change.
+      We're not limited to declaring reactive values — we can also run arbitrary statements reactively. For example, we can log the value of count
+      whenever it changes.
     </p>
+    <p>We can even do things like easily group statements together with a block and write if statements within (Consult Javascript Code)</p>
   </div>
   <hr />
   <div class="links">
-    <a href={currentTutoLink}>Link to Docs</a>
+    <a href={currentTutoLink} target="_blank">Link to Docs</a>
   </div>
   <hr />
   <div class="code">
