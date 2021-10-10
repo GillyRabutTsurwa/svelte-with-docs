@@ -2,7 +2,7 @@
   let title = "Introduction";
   let subtitle = "Dynamic Attributes";
 
-  const currentTutoLink = "https://svelte.dev/tutorial/adding-data";
+  const currentTutoLink = "https://svelte.dev/tutorial/dynamic-attributes";
   const portfolioSite = "https://gilbertrabuttsurwa.tech";
 
   const href = "https://github.com/GillyRabutTsurwa";
