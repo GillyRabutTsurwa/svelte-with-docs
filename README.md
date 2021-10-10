@@ -1,3 +1,3 @@
-# Adding Data
-- this will be the among the shortest markdown files in this series of learning Svelte
-- learning how to use JavaScript variables (primitive types only so far) in our template... c'est tout
+# Dynamic Attributes
+- to paraphrase, this is simply assigning JavaScript values to HTML attributes. that's it
+- we also learnt about the shorthand syntaxe
