@@ -1,26 +1,11 @@
 <script>
-  let title = "Reactivity";
-  let subtitle = "Updating Arrays & Objects";
+  import Nested from "./Nested.svelte";
 
-  const topicPrependText = "updating-arrays-and-objects";
+  let title = "Props";
+  let subtitle = "Declaring Props";
+
+  const topicPrependText = "declaring-props";
   const currentTutoLink = `https://svelte.dev/tutorial/${topicPrependText}`;
-
-  let numbers = [1, 2, 3, 4];
-  let numéros = [1, 2, 3, 4];
-
-  // NOTE: this function is not ideal, as it is redundant. but it works
-  function addNumber() {
-    numbers.push(numbers.length + 1);
-    numbers = numbers;
-  }
-
-  //NOTE: cette fonction est beaucoup mieux, et fait la même action
-  function addNumberBetter() {
-    numéros = [...numéros, numéros.length + 1];
-  }
-
-  $: sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  $: somme = numéros.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 </script>
 
 <main>
@@ -28,11 +13,16 @@
     <h1 class="docs__title">{title}</h1>
     <h2 class="docs__subtitle">{subtitle}</h2>
     <p class="docs__text">
-      Because Svelte's reactivity is triggered by assignments, using array methods like push and splice won't automatically cause updates. For
-      example, clicking the button doesn't do anything.
+      So far, we've dealt exclusively with internal state — that is to say, the values are only accessible within a given component.
     </p>
-    <p class="docs__text">You can use similar patterns to replace pop, shift, unshift and splice.</p>
-    <p>If you still don't understand, come back to this branch and play around</p>
+    <p class="docs__text">
+      In any real application, you'll need to pass data from one component down to its children. To do that, we need to declare properties, generally
+      shortened to 'props'. In Svelte, we do that with the export keyword (in the child component)
+    </p>
+    <p class="docs__text">
+      Just like <code>$:</code>, this may feel a little weird at first. That's not how export normally works in JavaScript modules! Just roll with it
+      for now — it'll soon become second nature.
+    </p>
   </div>
   <hr />
   <div class="links">
@@ -40,14 +30,7 @@
   </div>
   <hr />
   <div class="code">
-    <div class="example1">
-      <p>{numbers.join(" + ")} = {sum}</p>
-      <button on:click={addNumber}>Add a Number</button>
-    </div>
-    <div class="example2">
-      <p>{numéros.join(" + ")} = {somme}</p>
-      <button on:click={addNumberBetter}>Ajouter un Numéro</button>
-    </div>
+    <Nested answer={27} />
   </div>
 </main>
 
