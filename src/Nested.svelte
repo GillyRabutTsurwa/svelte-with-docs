@@ -1,5 +1,5 @@
 <script>
-  export let answer; // NOTE: export keyword necessary to declare this variable as a prop
+  export let answer = "nunya business"; // NEW: now we have a prop with a default value
 </script>
 
 <h4>The answer is <span class="underline">{answer}</span></h4>
