@@ -1,5 +1,5 @@
-# Reactive Statements
-- just like reactive declarations, but instead of assigning values, we can also write code with the dependent value as the subject
-- so for example, in our last example in the previous branch, we made a squared reactive variable which was dependent on ```count``` which updated everytime ```count``` was changed
-- this time, we can simply ```console.log(count)```, for example, everytime ```count``` changes. we can obviously do much more
-- 
+# Updating Arrays and Objects
+- a good knowledge of Javascript is required for this to sink in
+- updating arrays and objects is not as straight forward as it is in Vanilla JavaScript
+- it is difficult to explain, the best way to grasp it is to practise it
+- it isn't that difficult of a concept the main thing to pay attention to is how the value of updated arrays and objects are redefined

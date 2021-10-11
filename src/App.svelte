@@ -1,32 +1,26 @@
 <script>
   let title = "Reactivity";
-  let subtitle = "Statements";
+  let subtitle = "Updating Arrays & Objects";
 
-  const topicPrependText = "reactive-statements";
+  const topicPrependText = "updating-arrays-and-objects";
   const currentTutoLink = `https://svelte.dev/tutorial/${topicPrependText}`;
 
-  let count = 0;
+  let numbers = [1, 2, 3, 4];
+  let numéros = [1, 2, 3, 4];
 
-  function incrementCount() {
-    count += 1;
+  // NOTE: this function is not ideal, as it is redundant. but it works
+  function addNumber() {
+    numbers.push(numbers.length + 1);
+    numbers = numbers;
   }
 
-  // ============== NEW: Examples of Reactive Statements ==============
-  $: squared = Math.pow(count, 2);
-
-  $: console.log(`The count is ${count}`);
-
-  $: {
-    console.log(`Le compte c'est ${count}`);
-    console.log(`J'ai dit que le compte c'est ${count}`);
+  //NOTE: cette fonction est beaucoup mieux, et fait la même action
+  function addNumberBetter() {
+    numéros = [...numéros, numéros.length + 1];
   }
 
-  $: {
-    if (squared >= 100) {
-      console.warn("Yo, cool down the pace");
-    }
-  }
-  // ===================================================================
+  $: sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  $: somme = numéros.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 </script>
 
 <main>
@@ -34,10 +28,11 @@
     <h1 class="docs__title">{title}</h1>
     <h2 class="docs__subtitle">{subtitle}</h2>
     <p class="docs__text">
-      We're not limited to declaring reactive values — we can also run arbitrary statements reactively. For example, we can log the value of count
-      whenever it changes.
+      Because Svelte's reactivity is triggered by assignments, using array methods like push and splice won't automatically cause updates. For
+      example, clicking the button doesn't do anything.
     </p>
-    <p>We can even do things like easily group statements together with a block and write if statements within (Consult Javascript Code)</p>
+    <p class="docs__text">You can use similar patterns to replace pop, shift, unshift and splice.</p>
+    <p>If you still don't understand, come back to this branch and play around</p>
   </div>
   <hr />
   <div class="links">
@@ -45,8 +40,14 @@
   </div>
   <hr />
   <div class="code">
-    <p>{count} squared is {squared}</p>
-    <button on:click={incrementCount}>Clicked {count === 1 ? "time" : "times"}</button>
+    <div class="example1">
+      <p>{numbers.join(" + ")} = {sum}</p>
+      <button on:click={addNumber}>Add a Number</button>
+    </div>
+    <div class="example2">
+      <p>{numéros.join(" + ")} = {somme}</p>
+      <button on:click={addNumberBetter}>Ajouter un Numéro</button>
+    </div>
   </div>
 </main>
 
